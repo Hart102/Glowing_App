@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BiSearch, BiUser, BiStar, BiCart, BiMenu } from "react-icons/bi"
 import { FaTimes } from "react-icons/fa"
+import Motion from "../../component/Motion"
 
 
 const Navbar = () => {
@@ -18,41 +19,48 @@ const Navbar = () => {
       </div>
 
       {/* Desktop View */}
-      <div className="hidden px-10 py-4 md:flex items-center justify-between">
-        <form className="flex-1">
-          <div className="flex items-center justify-between border rounded-full p-3 border-primary-color w-1/2">
-            <input
-              type="text"
-              placeholder="Search products..."
-              className="placeholder:text-[1.2rem] placeholder:text-primary-color"
-            />
-            <BiSearch size={30} className="text-cl-yellow-dark" />
+      <Motion
+        myVariants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: { opacity: 1, y: 0 },
+        }}
+      >
+        <div className="hidden px-10 py-4 md:flex items-center justify-between">
+          <form className="flex-1">
+            <div className="flex items-center justify-between border rounded-full p-3 border-primary-color w-1/2">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="placeholder:text-[1.2rem] placeholder:text-primary-color"
+              />
+              <BiSearch size={30} className="text-cl-yellow-dark" />
+            </div>
+          </form>
+          <div className="flex-1 text-center">
+            <h2 className="font-bold text-[2.7rem]">GLOWING</h2>
           </div>
-        </form>
-        <div className="flex-1 text-center">
-          <h2 className="font-bold text-[2.7rem]">GLOWING</h2>
+          <div className="flex items-center justify-end gap-8 flex-1">
+            <BiUser size={25} className="text-primary-color" />
+            <BiStar size={25} className="text-primary-color" />
+            <BiCart size={25} className="text-primary-color" />
+          </div>
         </div>
-        <div className="flex items-center justify-end gap-8 flex-1">
-          <BiUser size={25} className="text-primary-color" />
-          <BiStar size={25} className="text-primary-color" />
-          <BiCart size={25} className="text-primary-color" />
-        </div>
-      </div>
 
-      <div className="hidden md:flex justify-center">
-        <div className="flex text-center gap-10 text-[1.3rem] mx-auto text-primary-color">
-          {
-            links.map((link) => (
-              <a
-                href="/"
-                key={link}
-                className="text-[0.9em] hover:scale-110 hover:text-cl-black duration-200 delay-200">
-                {link}
-              </a>
-            ))
-          }
+        <div className="hidden md:flex justify-center">
+          <div className="flex text-center gap-10 text-[1.3rem] mx-auto text-primary-color">
+            {
+              links.map((link) => (
+                <a
+                  href="/"
+                  key={link}
+                  className="text-[0.9em] hover:scale-110 hover:text-cl-black duration-200 delay-200">
+                  {link}
+                </a>
+              ))
+            }
+          </div>
         </div>
-      </div>
+      </Motion>
 
       {/* Mobile View */}
       <div className="grid grid-cols-3 items-center p-4 md:hidden">

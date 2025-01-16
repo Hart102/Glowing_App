@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { BiSearch, BiUser, BiStar, BiCart, BiMenu } from "react-icons/bi"
-import { FaTimes } from "react-icons/fa"
+import {Link} from "react-router-dom"
+import { 
+  UserIcon,
+  StarIcon,
+  ShoppingCartIcon,
+  SunIcon,
+  MoonIcon,
+  Bars3Icon,
+  XMarkIcon,
+  MagnifyingGlassIcon
+} from "@heroicons/react/24/outline"
 import Motion from "../../component/Motion"
 
 
-import { UserIcon, StarIcon, ShoppingCartIcon, SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 
 
 const Navbar = () => {
@@ -36,11 +44,11 @@ const Navbar = () => {
                 placeholder="Search products..."
                 className="placeholder:text-[1.2rem] placeholder:text-primary-color"
               />
-              <BiSearch size={30} className="text-cl-yellow-dark" />
+              <MagnifyingGlassIcon size={30} className="text-cl-yellow-dark" />
             </div>
           </form>
           <div className="flex-1 text-center">
-            <h2 className="font-bold text-[2.7rem]">GLOWING</h2>
+            <h2 className="font-bold text-[2.5rem]">GLOWING</h2>
           </div>
           <div className="flex items-center justify-end gap-10 flex-1">
             <UserIcon />
@@ -86,12 +94,12 @@ const Navbar = () => {
           <div className="flex text-center gap-10 text-[1.3rem] mx-auto text-primary-color">
             {
               links.map((link) => (
-                <a
-                  href="/"
+                <Link
+                  to="#"
                   key={link}
                   className="text-[0.9em] hover:scale-110 hover:text-cl-black duration-200 delay-200">
                   {link}
-                </a>
+                </Link>
               ))
             }
           </div>
@@ -114,7 +122,7 @@ const Navbar = () => {
         <div className="flex flex-col gap-4 uppercase font-semibold">
           {
             links.map((link) => (
-              <a href="/" key={link} onClick={handleClose}>{link}</a>
+              <Link to="#" key={link} onClick={handleClose}>{link}</Link>
             ))
           }
         </div>
